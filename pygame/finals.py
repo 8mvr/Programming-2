@@ -73,27 +73,23 @@ while is_running:
             man.isJump = True
             man.velY = -15
     
-    # Apply gravity
     man.velY += man.gravity
     man.y += man.velY
     
-    # Check collision with obstacle
     if check_collision(man, obstacle1):
-        if man.velY > 0:  # Falling down
+        if man.velY > 0:
             man.y = obstacle1.y - man.height
             man.velY = 0
             man.isJump = False
-        elif man.velY < 0:  # Jumping up
+        elif man.velY < 0:
             man.y = obstacle1.y + obstacle1.height
             man.velY = 0
     
-    # Stop at bottom of screen
     if man.y > 700 - man.height:
         man.y = 700 - man.height
         man.velY = 0
         man.isJump = False
     
-    # Stop at top of screen
     if man.y < 0:
         man.y = 0
         man.velY = 0
